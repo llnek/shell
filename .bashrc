@@ -2,6 +2,7 @@
 # see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)
 # for examples
 
+userid=`whoami`
 
 # If not running interactively, don't do anything
 [ -z "$PS1" ] && return
@@ -330,7 +331,7 @@ esac
 }
 
 # ending
-if [ "$LOGNAME" == "kenl" ]
+if [ "$LOGNAME" == "$userid" ]
 then
     #cd
     #today -s 2                     # personal script
@@ -338,7 +339,7 @@ then
     echo " "
     ##fortune
 else
-    echo "You are not kenl ?"
+    echo "You are not $userid ?"
     PS1='$PWD # '
     HISTORY=0
 fi
@@ -392,7 +393,7 @@ export PS1=$White"\u@\h"'$(
     else echo "'$Cyan'"$(__git_ps1 " (%s)")
     fi)'$Green" \n\w"$White": "
 export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.8.0_112.jdk/Contents/Home
-export SENCHA_CMD_3_0_0="/Users/kenl/bin/Sencha/Cmd/5.1.3.61"
+export SENCHA_CMD_3_0_0="/Users/$userid/bin/Sencha/Cmd/5.1.3.61"
 export NODE_PATH=~/.node_libraries:~/.npm:~/node_modules
 export OPENSSL_HOME=/usr/local/Cellar/openssl/1.0.2j
 export APACHE_HOME=/usr/local/apache2
@@ -410,7 +411,7 @@ export ANDROID_HOME=$ANDROID_SDK_ROOT
 export NDK_ROOT=/wdrive/opt/google/ndk
 export GDK_NATIVE_WINDOWS=true
 
-export PATH=/Users/kenl/bin/Sencha/Cmd/5.1.3.61:$PATH
+export PATH=/Users/$userid/bin/Sencha/Cmd/5.1.3.61:$PATH
 export PATH=$ANDROID_SDK_ROOT:$NDK_ROOT:$PATH
 export PATH=$RUBY_HOME/bin:$PATH
 export PATH=$APACHE_HOME/bin:$PATH
@@ -444,7 +445,7 @@ alias path="echo $PATH | tr ':' '\n'"
 
 ### run archey
 archey
-
+echo "user $userid logged in!"
 
 
 
